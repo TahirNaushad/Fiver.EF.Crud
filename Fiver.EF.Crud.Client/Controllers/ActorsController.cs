@@ -15,6 +15,7 @@ namespace Fiver.EF.Crud.Client.Controllers
         public ActorsController(Database context)
         {
             this.context = context;
+            this.context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         [HttpGet]
