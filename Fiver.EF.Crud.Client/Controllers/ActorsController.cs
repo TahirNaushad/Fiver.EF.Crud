@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Fiver.EF.Crud.Client.Models.Actors;
 using Fiver.EF.Crud.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Fiver.EF.Crud.Client.Controllers
 {
@@ -17,9 +18,9 @@ namespace Fiver.EF.Crud.Client.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetList()
+        public async Task<IActionResult> GetList()
         {
-            var entities = context.Actors.ToList();
+            var entities = await context.Actors.ToListAsync();
 
             var outputModel = entities.Select(entity => new
             {
@@ -50,7 +51,7 @@ namespace Fiver.EF.Crud.Client.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]ActorInputModel inputModel)
+        public async Task<IActionResult> Create([FromBody]ActorInputModel inputModel)
         {
             var entity = new Actor
             {
@@ -58,7 +59,7 @@ namespace Fiver.EF.Crud.Client.Controllers
             };
 
             this.context.Actors.Add(entity);
-            this.context.SaveChanges();
+            await this.context.SaveChangesAsync();
 
             var outputModel = new
             {
