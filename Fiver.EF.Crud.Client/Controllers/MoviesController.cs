@@ -168,6 +168,21 @@ namespace Fiver.EF.Crud.Client.Controllers
             return NoContent();
         }
 
+        [HttpPost("{movieId}/actors")]
+        public IActionResult AddMovieActor(int movieId, [FromBody]MovieActorInputModel inputModel)
+        {
+            this.context.MovieActors.Add(new MovieActor
+            {
+                MovieId = movieId,
+                ActorId = inputModel.ActorId,
+                Role = inputModel.Role
+            });
+
+            this.context.SaveChanges();
+
+            return NoContent();
+        }
+
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
