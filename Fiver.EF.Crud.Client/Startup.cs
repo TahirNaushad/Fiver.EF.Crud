@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Fiver.EF.Crud.Client.Logger;
 
 namespace Fiver.EF.Crud.Client
 {
@@ -34,6 +35,8 @@ namespace Fiver.EF.Crud.Client
             IHostingEnvironment env,
             ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddProvider(new EfLoggerProvider());
+
             app.UseDeveloperExceptionPage();
             app.UseMvcWithDefaultRoute();
         }
