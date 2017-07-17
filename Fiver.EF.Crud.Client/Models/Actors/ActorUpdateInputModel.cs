@@ -1,13 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Fiver.EF.Crud.Entities
-{
-    public class Actor
+﻿namespace Fiver.EF.Crud.Client.Models.Actors
+{ 
+    public class ActorUpdateInputModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        //[Timestamp]
         public byte[] Timestamp { get; set; }
     }
 }

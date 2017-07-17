@@ -13,5 +13,13 @@ namespace Fiver.EF.Crud
         public DbSet<Movie> Movies { get; set; }
         public DbSet<MovieActor> MovieActors { get; set; }
         public DbSet<Review> Reviews { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Actor>()
+                        .Property(actor => actor.Timestamp)
+                        .ValueGeneratedOnAddOrUpdate()
+                        .IsConcurrencyToken();
+        }
     }
 }

@@ -56,24 +56,24 @@ namespace Fiver.EF.Crud.Client.Controllers
         public IActionResult GetItem(int id)
         {
             var entity = (from movie in this.context.Movies
-                         join director in this.context.Directors
-                            on movie.DirectorId equals director.Id
-                         where movie.Id == id
-                         select new
-                         {
-                             movie.Id,
-                             movie.Title,
-                             movie.ReleaseYear,
-                             movie.Summary,
-                             Director = director.Name,
-                             Actors = (
-                                            from actor in this.context.Actors
-                                            join movieActor in this.context.MovieActors
-                                                on actor.Id equals movieActor.ActorId
-                                            where movieActor.MovieId == movie.Id
-                                            select actor.Name
-                                        )
-                         }).FirstOrDefault();
+                          join director in this.context.Directors
+                             on movie.DirectorId equals director.Id
+                          where movie.Id == id
+                          select new
+                          {
+                              movie.Id,
+                              movie.Title,
+                              movie.ReleaseYear,
+                              movie.Summary,
+                              Director = director.Name,
+                              Actors = (
+                                             from actor in this.context.Actors
+                                             join movieActor in this.context.MovieActors
+                                                 on actor.Id equals movieActor.ActorId
+                                             where movieActor.MovieId == movie.Id
+                                             select actor.Name
+                                         )
+                          }).FirstOrDefault();
 
             if (entity == null)
                 return NotFound();
@@ -92,7 +92,7 @@ namespace Fiver.EF.Crud.Client.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody]MovieInputModel inputModel)
+        public IActionResult Create([FromBody]MovieCreateInputModel inputModel)
         {
             if (inputModel == null)
                 return BadRequest();
@@ -110,7 +110,7 @@ namespace Fiver.EF.Crud.Client.Controllers
                     };
                     this.context.Movies.Add(entity);
                     this.context.SaveChanges();
-                    
+
                     foreach (var actor in inputModel.Actors)
                     {
                         this.context.MovieActors.Add(new MovieActor
@@ -123,8 +123,7 @@ namespace Fiver.EF.Crud.Client.Controllers
                     this.context.SaveChanges();
 
                     transaction.Commit();
-
-
+                    
                     var outputModel = new
                     {
                         entity.Id,
@@ -150,17 +149,14 @@ namespace Fiver.EF.Crud.Client.Controllers
             if (inputModel == null || id != inputModel.Id)
                 return BadRequest();
 
-            var entity = context.Movies
-                                .Where(e => e.Id == id)
-                                .FirstOrDefault();
-
-            if (entity == null)
-                return NotFound();
-
-            entity.Title = inputModel.Title;
-            entity.ReleaseYear = inputModel.ReleaseYear;
-            entity.Summary = inputModel.Summary;
-            entity.DirectorId = inputModel.DirectorId;
+            var entity = new Movie
+            {
+                Id = inputModel.Id,
+                Title = inputModel.Title,
+                ReleaseYear = inputModel.ReleaseYear,
+                Summary = inputModel.Summary,
+                DirectorId = inputModel.DirectorId
+            };
 
             this.context.Entry(entity).State = EntityState.Modified;
             this.context.SaveChanges();
@@ -171,6 +167,9 @@ namespace Fiver.EF.Crud.Client.Controllers
         [HttpPost("{movieId}/actors")]
         public IActionResult AddMovieActor(int movieId, [FromBody]MovieActorInputModel inputModel)
         {
+            if (inputModel == null)
+                return BadRequest();
+
             this.context.MovieActors.Add(new MovieActor
             {
                 MovieId = movieId,
@@ -193,12 +192,26 @@ namespace Fiver.EF.Crud.Client.Controllers
             if (entity == null)
                 return NotFound();
 
-            this.context.Movies.Remove(entity);
-            this.context.MovieActors.RemoveRange(
-                this.context.MovieActors.Where(e => e.MovieId == id).ToList());
+            using (var transaction = this.context.Database.BeginTransaction())
+            {
+                try
+                {
+                    this.context.Movies.Remove(entity);
 
-            this.context.SaveChanges();
+                    this.context.MovieActors.RemoveRange(
+                        this.context.MovieActors.Where(e => e.MovieId == id).ToList());
 
+                    this.context.SaveChanges();
+
+                    transaction.Commit();
+                }
+                catch (System.Exception ex)
+                {
+                    transaction.Rollback();
+                    return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+                }
+            }
+            
             return NoContent();
         }
     }

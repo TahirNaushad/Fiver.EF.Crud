@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Fiver.EF.Crud.Client.Logger
 {
