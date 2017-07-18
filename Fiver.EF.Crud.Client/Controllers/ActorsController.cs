@@ -94,7 +94,7 @@ namespace Fiver.EF.Crud.Client.Controllers
             
             try
             {
-                this.context.Entry(entity).State = EntityState.Modified;
+                this.context.Actors.Update(entity);
                 this.context.SaveChanges();
             }
             catch (DbUpdateConcurrencyException ex)

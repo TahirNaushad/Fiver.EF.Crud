@@ -158,7 +158,7 @@ namespace Fiver.EF.Crud.Client.Controllers
                 DirectorId = inputModel.DirectorId
             };
 
-            this.context.Entry(entity).State = EntityState.Modified;
+            this.context.Movies.Update(entity);
             this.context.SaveChanges();
 
             return NoContent();
