@@ -14,7 +14,7 @@ namespace Fiver.EF.Crud.Client
         {
             var connection = "Data Source=TAHIR;Initial Catalog=efCrud;Integrated Security=True;Connect Timeout=15;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
-            // 1. Adding using DI and DbContextOptionsBuilder
+            // 1. Add using DI and DbContextOptionsBuilder
             //services.AddScoped(factory =>
             //{
             //    var builder = new DbContextOptionsBuilder<Database>();
