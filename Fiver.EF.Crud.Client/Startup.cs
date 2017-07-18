@@ -25,7 +25,8 @@ namespace Fiver.EF.Crud.Client
 
             // 2. Add using extension method
             services.AddDbContext<Database>(options =>
-                        options.UseSqlServer(connection));
+                        options.UseSqlServer(connection)
+                               .EnableSensitiveDataLogging());
 
             services.AddMvc();
         }
