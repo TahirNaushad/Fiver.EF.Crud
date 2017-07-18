@@ -8,9 +8,10 @@ using Fiver.EF.Crud;
 namespace Fiver.EF.Crud.Migrations
 {
     [DbContext(typeof(Database))]
-    partial class DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20170718072942_'NullBirthDate'")]
+    partial class NullBirthDate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
