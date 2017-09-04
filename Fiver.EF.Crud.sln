@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiver.EF.Crud", "Fiver.EF.Crud\Fiver.EF.Crud.csproj", "{0AC91913-29B6-497B-9AF0-A8E035AA9BE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fiver.EF.Crud", "Fiver.EF.Crud\Fiver.EF.Crud.csproj", "{0AC91913-29B6-497B-9AF0-A8E035AA9BE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiver.EF.Crud.Client", "Fiver.EF.Crud.Client\Fiver.EF.Crud.Client.csproj", "{90DC345E-C37B-46EF-838F-1ACD8B675BFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fiver.EF.Crud.Client", "Fiver.EF.Crud.Client\Fiver.EF.Crud.Client.csproj", "{90DC345E-C37B-46EF-838F-1ACD8B675BFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "postman", "postman", "{996EA604-A440-4CEC-88B5-DAED5B10D1FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1E1FCA9F-93FA-4AD8-8C1E-423E62521169}
 	EndGlobalSection
 EndGlobal
