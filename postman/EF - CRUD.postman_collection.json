@@ -1,0 +1,155 @@
+{
+	"variables": [],
+	"info": {
+		"name": "EF - CRUD",
+		"_postman_id": "7aad5400-1261-6df8-d662-475f9e99e506",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:39047/actors",
+			"request": {
+				"url": "http://localhost:39047/actors",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:39047/actors",
+			"request": {
+				"url": "http://localhost:39047/actors",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Bernard Lee\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:39047/actors/4",
+			"request": {
+				"url": "http://localhost:39047/actors/4",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 4,\n    \"name\": \"Roger Moore\",\n\t\"timestamp\": \"AAAAAAAAB+I=\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:39047/actors/3",
+			"request": {
+				"url": "http://localhost:39047/actors/3",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:39047/movies",
+			"request": {
+				"url": "http://localhost:39047/movies",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:39047/movies",
+			"request": {
+				"url": "http://localhost:39047/movies",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\": \"Live and Let Die\",\n\t\"releaseYear\": 1973,\n\t\"summary\": \"007 is sent to stop a diabolically brilliant heroin magnate armed with a complex organization and a reliable psychic tarot card reader.\",\n\t\"directorId\": 2,\n\t\"actors\": [\n\t\t{\n\t\t\t\"actorId\": 4,\n\t\t\t\"role\": \"James Bond\"\n\t\t},\n\t\t{\n\t\t\t\"actorId\": 5,\n\t\t\t\"role\": \"Solitaire\"\n\t\t},\n\t\t{\n\t\t\t\"actorId\": 6,\n\t\t\t\"role\": \"Kananga / Mr. Big\"\n\t\t}\n\t]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:39047/movies/7",
+			"request": {
+				"url": "http://localhost:39047/movies/8",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": 8,\n\t\"title\": \"Live and Let Die\",\n\t\"releaseYear\": 2973,\n\t\"summary\": \"007 is sent to stop a diabolically brilliant heroin magnate armed with a complex organization and a reliable psychic tarot card reader.\",\n\t\"directorId\": 2\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:39047/movies/6",
+			"request": {
+				"url": "http://localhost:39047/movies/7",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:39047/movies/1/actors",
+			"request": {
+				"url": "http://localhost:39047/movies/1/actors",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"actorId\": 9,\n\t\"role\": \"M\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
