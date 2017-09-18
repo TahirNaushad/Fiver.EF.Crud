@@ -8,6 +8,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fiver.EF.Crud.Client", "Fiver.EF.Crud.Client\Fiver.EF.Crud.Client.csproj", "{90DC345E-C37B-46EF-838F-1ACD8B675BFB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "postman", "postman", "{996EA604-A440-4CEC-88B5-DAED5B10D1FC}"
+	ProjectSection(SolutionItems) = preProject
+		postman\EF - CRUD.postman_collection.json = postman\EF - CRUD.postman_collection.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
